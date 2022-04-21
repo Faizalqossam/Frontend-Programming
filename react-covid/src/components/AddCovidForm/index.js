@@ -4,9 +4,8 @@ import {useState} from 'react';
 import Alert from "../Alert";
 
 function AddCovidForm(props){
-    const {provinces,setProvinces} = props;
 
-    // console.log(props.provinces);
+    const {provinces,setProvinces} = props;
 
     const [provinsi,setProvinsi] = useState("Jakarta")
     const [status,setStatus] = useState("kasus")
@@ -44,6 +43,7 @@ function AddCovidForm(props){
         // }
 
         setProvinces([...provinces])
+        setIsJumlahError(false)
     }
 
     function handleProvinsi(e){
@@ -66,7 +66,6 @@ function AddCovidForm(props){
         }else {
             updateProvinces();
         }
-
 
     }
 
