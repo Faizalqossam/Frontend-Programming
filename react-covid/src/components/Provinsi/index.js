@@ -6,6 +6,7 @@ function Provinsi(props){
 
     const {provinces} = props;
     let angka ='';
+    
     return(
         <div className={styles.container}>
             <section className={styles.provinsi}>
