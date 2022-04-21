@@ -4,7 +4,7 @@ function Alert(props){
     const {children} = props
 
     return(
-        <div className={styles}>
+        <div className={styles.alert__jumlah}>
             <span>{children}</span>
         </div>
     )
