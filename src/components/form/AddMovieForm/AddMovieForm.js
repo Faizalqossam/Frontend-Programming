@@ -32,9 +32,6 @@ const AddMovieForm = (props) =>{
         isImgError:false,
     })
 
-
-    // const {setIsTitleError, setIsDateError, setIsGenreError, setIsImgError} = setMsgError
-
     const {isTitleError, isDateError, isGenreError, isImgError} = msgError
 
     const {title, date, genre, img} = formData
@@ -74,10 +71,6 @@ const AddMovieForm = (props) =>{
             })
             return false;
         }else{
-            // setIsTitleError(false)
-            // setIsDateError(false)
-            // setIsGenreError(false)
-            // setIsImgError(false)
             setMsgError({
                 ...msgError,
                 isTitleError:false,
