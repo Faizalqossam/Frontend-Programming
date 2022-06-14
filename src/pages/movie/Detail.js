@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import DetailMovie from "../../components/DetailMovie";
 import Movies from "../../components/movies/Movies";
+import ENDPOINTS from "../../utils/constants/endpoints";
 
 function Detail(){
     const params = useParams();
@@ -14,17 +15,15 @@ function Detail(){
     },[params.id])
     
     async function getRecomendationMovies(){
-        const URL = `https://api.themoviedb.org/3/movie/${params.id}/recommendations?api_key=${API_KEY}`
-        const response = await axios(URL);
+        const response = await axios(ENDPOINTS.RECOMMENDATIONS(params.id));
 
         setMovies(response.data.results);
     }
 
-    console.log(movies);
     return(
         <>
         <DetailMovie />
-        <Movies movies={movies} />
+        <Movies title="Recommendation Movies" movies={movies} />
         </>
     )
 }
