@@ -16,14 +16,16 @@ const moviesSlice = createSlice({
             // add movie to movies
             state.movies.push(action.payload);
         },
-        deleteMovie() {},
+        updateMovies(state,action) {
+            state.movies = action.payload;
+        },
     },
 })
 
 // generate action dan reducer
 const moviesReducer = moviesSlice.reducer;
-const { addMovie, deleteMovie } = moviesSlice.actions;
+const { addMovie, updateMovies } = moviesSlice.actions;
 
 // export action dan reducer
 export default moviesReducer;
-export { addMovie, deleteMovie};
+export { addMovie, updateMovies};

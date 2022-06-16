@@ -1,15 +1,17 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect} from "react";
+import { useDispatch } from "react-redux";
 import Hero from "../../components/hero/Hero";
 import Movies from "../../components/movies/Movies";
+import { updateMovies } from "../../features/moviesSlices";
 import ENDPOINTS from "../../utils/constants/endpoints";
 
 function NowPlayingMovie(){
-    //membuat state movie
-    const [movies, setMovies] = useState([])
+    const dispatch = useDispatch();
 
     useEffect(()=>{
         getNowPlayingMovies();
+         // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
 
     async function getNowPlayingMovies(){
@@ -17,14 +19,14 @@ function NowPlayingMovie(){
         const response = await axios(ENDPOINTS.NOW_PLAYING);
 
         //simpan data ke state
-        setMovies(response.data.results)
+        dispatch(updateMovies(response.data.results))
     }
 
 
     return(
         <div>
             <Hero />
-            <Movies title="Now Playing" movies={movies} />
+            <Movies title="Now Playing" />
         </div>
     )
 }

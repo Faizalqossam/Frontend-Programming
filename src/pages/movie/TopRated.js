@@ -1,14 +1,17 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect} from "react";
+import { useDispatch } from "react-redux";
 import Hero from "../../components/hero/Hero";
 import Movies from "../../components/movies/Movies";
+import { updateMovies } from "../../features/moviesSlices";
 import ENDPOINTS from "../../utils/constants/endpoints";
 
 function TopRatedMovie(){
-    const [movies, setMovies] = useState([]);
+    const dispatch = useDispatch()
 
     useEffect(()=>{
         getTopRatedMovies();
+         // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
 
     async function getTopRatedMovies(){
@@ -16,13 +19,13 @@ function TopRatedMovie(){
         const response = await axios(ENDPOINTS.TOP_RATED);
 
         //simpan data ke state
-        setMovies(response.data.results)
+        dispatch(updateMovies(response.data.results))
     }
 
     return(
         <div>
             <Hero />
-            <Movies title="Top Rated" movies={movies} />
+            <Movies title="Top Rated"  />
         </div>
     )
 }
